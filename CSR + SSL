@@ -1,0 +1,51 @@
+ 608  mv .htaccess-bak .htaccess
+  609  openssl req -new -newkey rsa:2048 -nodes -keyout www.naanjil.com.key -out www.naanjil.com.csr
+  610  ll
+  611  cat www.naanjil.com.csr
+  612  cat www.naanjil.com.key 
+  613  cd /etc/
+  614  ll
+  615  cd httpd
+  616  ll
+  617  cd conf.d
+  618  ll
+  619  cd ..
+  620  cd conf
+  621  ll
+  622  cd ..
+  623  cd conf.d/
+  624  ll
+  625  cd ..
+  626  ll
+  627  cd conf.d
+  628  ll
+  629  vim ssl.conf
+  630  vim ssl.conf
+  631  vim ssl.conf
+  632  cat /etc/httpd/ssl/naanjil.com.crt
+  633  vim ssl.conf
+  634  cd /etc/httpd/ssl/
+  635  ll
+  636  mv naanjil.com.crt naanjil.com.crt-old
+  637* mv naanjil.com.key naanjil.com.key.old 
+  638  vim naanjil.com.crt
+  639  vim naanjil.com.chain.crt
+  640  vim ssl.conf
+  641  vim /etc/httpd/conf.d/ssl.conf
+  642  mv naanjil.com.chain.crt naanjil.com.ca-bundle.crt
+  643  ll
+  644  vim naanjil.com.key
+  645  ll
+  646  cat naanjil.com.crt
+  647  vim /etc/httpd/conf.d/ssl.conf
+  648  service httpd restart
+  649  vim /etc/httpd/conf.d/ssl.conf
+  650  vim /etc/httpd/conf.d/
+  651  cd /etc/httpd/conf.d/
+  652  ll
+  653  vim /etc/httpd/conf.d/ssl.conf
+  654  cd  /etc/httpd/ssl/
+  655  ll
+  656  cat naanjil.com.ca-bundle.crt 
+=====================================================================
+https://csrgenerator.com/
