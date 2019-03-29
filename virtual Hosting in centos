@@ -1,0 +1,21 @@
+virtual Hosting
+
+
+
+<VirtualHost *:80>
+ServerName      khushisharma.tk
+ServerAlias     wwww.khushisharma.tk
+DocumentRoot    /var/www/khushisharma.tk/public_html
+
+
+<Directory /var/www/khushisharma.tk/public_html>
+Options -Indexes +FollowSymLinks
+        AllowOverride All
+</Directory>
+
+
+RewriteEngine on
+RewriteCond %{SERVER_NAME} =khushisharma.tk [OR]
+RewriteCond %{SERVER_NAME} =wwww.khushisharma.tk
+RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
