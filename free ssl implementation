@@ -9,3 +9,7 @@ https://certbot.eff.org/lets-encrypt/centosrhel7-apache.html
 # yum -y install yum-utils
 # yum -y install certbot-apache
 $ sudo certbot --apache
+
+
+
+https://linuxhostsupport.com/blog/how-to-install-lets-encrypt-on-centos-7-with-apache/
