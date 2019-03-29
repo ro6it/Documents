@@ -13,3 +13,5 @@ $ sudo certbot --apache
 
 
 https://linuxhostsupport.com/blog/how-to-install-lets-encrypt-on-centos-7-with-apache/
+
+https://github.com/ladybirdweb/faveo-helpdesk/wiki/Install-Let%E2%80%99s-Encrypt-SSL-on-CentOS-7-Running-Apache-Web-Server
