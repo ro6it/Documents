@@ -1,5 +1,5 @@
 virtual Hosting
-
+https://linuxize.com/post/how-to-set-up-apache-virtual-hosts-on-centos-7/
 
 
 <VirtualHost *:80>
@@ -19,3 +19,7 @@ RewriteCond %{SERVER_NAME} =khushisharma.tk [OR]
 RewriteCond %{SERVER_NAME} =wwww.khushisharma.tk
 RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 </VirtualHost>
+
+
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-apache-virtual-hosts-on-centos-7
