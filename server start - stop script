@@ -1,0 +1,10 @@
+
+[root@ip-10-115-0-14 home]# vim Spine-stop.sh
+#!/bin/bash
+aws ec2 stop-instances --instance-ids i-0d519d5436fafb6de
+~
+
+
+#!/bin/bash
+aws ec2 start-instances --instance-ids i-0d519d5436fafb6de
+~
