@@ -1,0 +1,39 @@
+
+
+
+important
+
+
+hide apache server signature
+https://technumero.com/disable-server-signature-by-editing-htaccess-apache/
+
+
+
+httponly
+https://geekflare.com/httponly-secure-cookie-apache/
+
+
+
+test vulnerability
+
+https://tools.geekflare.com/report/http-header-test/
+
+http://security.firewallmonitor.org/
+
+https://fearby.com/article/set-up-feature-policy-referrer-policy-and-content-security-policy-headers-in-nginx/
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+imaplement password on website URL
+
+https://www.tecmint.com/phpmyadmin-login-password-protection-htaccess/
+
+
+Secure PHPmyadmin
+
+https://www.tecmint.com/change-secure-phpmyadmin-login-url-page/
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+

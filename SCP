@@ -1,0 +1,4 @@
+scp -r -P 5726 -i  priyanshiadmin.pem  /var/www/html/jatt/jatt/* priyanshiadmin@13.127.138.16:/home/priyanshiadmin/jatt
+
+
+scp -i /path/key.pem ec2-user@10.10.1.13:/opt.10.10.5.190/*  /opt/netpaisa.db

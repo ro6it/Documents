@@ -1,0 +1,3 @@
+/usr/local/bin/s3fs -o use_cache=/tmp/cache parle-uploads-bucket /var/www/html/wp-content/uploads-new -o passwd_file=/etc/passwd-s3fs
+
+s3fs#parle-uploads-bucket /var/www/html/wp-content/uploads-new fuse _netdev,allow_other,passwd_file=/etc/passwd-s3fs,use_cache=/tmp/cache 0 0
