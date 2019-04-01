@@ -1,0 +1,33 @@
+LINK -- https://www.liquidweb.com/kb/how-to-create-a-self-signed-ssl-certificate-on-centos/
+
+<VirtualHost *:80>
+    DocumentRoot /www/example1
+    ServerName example.com
+        ServerAlias www.example.com
+   # ErrorLog /var/www/example2.com/error.log
+   # CustomLog /var/www/example2.com/requests.log combined
+
+<Directory /www/example1>
+    AllowOverride ALL
+    Require all granted
+</Directory>
+
+</VirtualHost>
+
+
+
+<VirtualHost *:443>
+    DocumentRoot /www/example1
+    ServerName www.example.com
+
+    # Other directives here
+SSLEngine on
+SSLCertificateKeyFile /etc/httpd/ssl/apache.key
+SSLCertificateFile /etc/httpd/ssl/apache.crt
+
+<Directory /www/example1>
+         AllowOverride All
+        Require all granted
+</Directory>
+
+</VirtualHost>
