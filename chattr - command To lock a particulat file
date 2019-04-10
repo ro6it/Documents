@@ -1,0 +1,9 @@
+To lock a particulat file
+
+chattr +i file_name
+
+after that no one can edit this file.
+
+To make edit it.......
+
+chattr -i file_name 
