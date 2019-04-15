@@ -1,0 +1,77 @@
+    1  cd 
+    2  yum update 
+    3  cd /etc/yum.repos.d/
+    4  ll
+    5  vim amzn2-core.repo
+    6  cd
+    7  cd 
+    8  sudo yum -y install epel-release
+    9  yum install epel-release
+   10  wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   11  rpm -ivh epel-release-latest-7.noarch.rpm
+   12  cd /etc/yum.repos.d/
+   13  ll
+   14  vim epel.repo
+   15  vim epel.repo
+   16  yum clean all 
+   17  yum list all 
+   18  wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+   19  rpm -Uvh remi-release-7.rpm
+   20  ll
+   21  rm -rf remi-release-7.rpm
+   22  ll
+   23  vim remi-php72.repo
+   24  vim remi.repo
+   25  vim remi-safe.repo
+   26  yum clean all
+   27  yum update 
+   28  sudo yum-config-manager --enable remi-php72
+   29  yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+   30  yum install yum-utils
+   31   yum-config-manager --enable remi-php72
+   32  enabled = True
+   33  sudo yum search php72 | more
+   34  sudo yum search php72 | egrep 'fpm|gd|mysql|memcache'
+   35  yum install php72
+   36  yum install php72-php-fpm php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-xmlrpc php72-php-opcache
+   37   php --version
+   38   php72 --version
+   39  php72 --modules
+   40  systemctl enable php72-php-fpm.service
+   41  systemctl start php72-php-fpm.service
+   42  systemctl stop php72-php-fpm.service
+   43  systemctl restart php72-php-fpm.service
+   44  systemctl status php72-php-fpm.service
+Create nginx repo----
+   45  vim /etc/yum.repos.d/nginx.repo
+save this code in it:
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
+gpgcheck=0
+enabled=1
+
+   46  yum clean all 
+   47  yum install nginx
+   48  systemctl start nginx.service 
+   49  systemctl enable nginx.service 
+   50  systemctl status nginx.service 
+   51  egrep '^(user|group)' /etc/nginx/nginx.conf
+   52  cp /etc/opt/remi/php72/php-fpm.d/www.conf /etc/opt/remi/php72/php-fpm.d/www.conf.org
+   53  vim /etc/opt/remi/php72/php-fpm.d/www.conf
+   54  sudo systemctl restart php72-php-fpm.service
+   55  cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.org
+   56  vim /etc/nginx/conf.d/default.conf
+Add the following command into it:
+ location ~ \.php$ {
+        root /usr/share/nginx/html;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        include        fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    }
+}
+   57  sudo systemctl restart nginx
+   58  vim /usr/share/nginx/html/foo.php
+   59  history
+cd 

@@ -1,0 +1,116 @@
+Step 1: Do LAMP Configuration 
+
+Step 2: create a zabbix db and user for zabbix.
+
+mysql -u root -p
+password : Password
+CREATE DATABASE zabbix CHARACTER SET utf8 COLLATE utf8_bin;
+GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost' IDENTIFIED BY 'Password';
+
+step 3: change in php.ini files
+
+vim /etc/php.ini
+-----------------------------------------------------------------------------
+post_max_size=16M
+max_execution_time=300
+max_input_time=300
+date.timezone=Asia/Kolkata
+always_populate_raw_post_data=-1
+
+step 4: Add zabbix user
+
+groupadd zabbix 
+useradd -g zabbix zabbix
+
+step 5: download zabbix and extract
+
+mkdir /home/zabbix/downloads
+cd /home/zabbix/downloads
+wget https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/3.2.4/zabbix-3.2.4.tar.gz
+tar xvf zabbix-3.2.4.tar.gz
+
+step 6: import zabbix database
+
+cd /home/zabbix/downloads/zabbix-3.2.4/database/mysql/
+-----------------------------------------------------------------------------
+mysql -u zabbix -p zabbix < schema.sql
+mysql -u zabbix -p zabbix < images.sql
+mysql -u zabbix -p zabbix < data.sql
+-----------------------------------------------------------------------------
+step 7: configure zabbix-server and agent
+
+yum install gcc mysql-community-devel libxml2-devel  unixODBC-devel net-snmp-devel libcurl-devel libssh2-devel OpenIPMI-devel openssl-devel openldap-devel
+cd ../..
+./configure --help
+./configure --enable-server --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --with-unixodbc --with-ssh2 --with-openipmi --with-openssl
+make
+make install
+
+step 8: change zabbix conf for db binding
+
+vim /usr/local/etc/zabbix_server.conf
+-----------------------------------------------------------------------------
+DBName=zabbix
+DBUser=zabbix
+DBPassword=your_password
+-----------------------------------------------------------------------------
+
+step 9: change zabbix agent conf for server detection
+
+Server= server ip
+Server Active = server ip
+Hostname=Server1
+
+
+
+step 10: configure zabbix for web frontends/php/
+
+mkdir /var/www/html/zabbix
+cd /home/zabbix/downloads/zabbix-3.2.4/frontends/php/
+cp -a . /var/www/html/zabbix/
+chcon -Rv --type=httpd_sys_content_t /var/www/html                                                                ?
+setsebool -P httpd_can_network_connect=1							?	
+setsebool -P zabbix_can_network=1						?	
+chown -R apache:apache /var/www/html/zabbix
+chmod +x /var/www/html/zabbix/conf/
+cp /home/zabbix/downloads/zabbix-3.2.4/misc/init.d/fedora/core/zabbix_server /etc/init.d/zabbix_server
+cp /home/zabbix/downloads/zabbix-3.2.4/misc/init.d/fedora/core/zabbix_agentd /etc/init.d/zabbix_agentd
+chkconfig --add /etc/init.d/zabbix_server
+chkconfig --add /etc/init.d/zabbix_agentd
+-----------------------------------------
+chkconfig httpd on
+chkconfig mysqld on
+chkconfig zabbix_server on
+chkconfig zabbix_agentd on
+-----------------------------------------
+service zabbix_server start
+service zabbix_agentd start
+-----------------------------------------------------------------------------
+
+1. Use the same address you have for your server now and add /zabbix to the URL.
+URL : IP/zabbix
+>>Next
+
+2. Check for pre-requisites and fix errors if you have any.
+>>Next
+
+3. Enter settings to connect to database.
+password : Password
+>>Next
+
+4.  Enter details to connect to web interface.
+Name : 3.0.3
+>>Next
+>>Finish
+
+Connect to the Zabbix web interface with default credentials.
+Username: Admin
+Password: zabbix
+
+
+
+FOR CENTOS 7
+https://www.server-world.info/en/note?os=CentOS_7&p=zabbix32&f=1
+-- 
+
+Populates host inventory field ?

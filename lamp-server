@@ -1,0 +1,225 @@
+        creating lamp server on Amazon Linux-2(Linux-2, Apache-2.4, mysql-5.6 and Php-7.2)
+
+
+Download latest remi-release rpm from
+#wget http://rpms.remirepo.net/enterprise/7/remi/x86_64/
+
+Install remi-release rpm:
+# rpm -Uvh remi-release*rpm
+
+Install php72-php-tidy rpm package:
+# yum --enablerepo=remi install php72-php-tidy
+
+
+#yum install epel-release
+#wget https://rpmfind.net/linux/remi/enterprise/7/remi/armhfp/remi-release-7.5-2.el7.remi.noarch.rpm
+#rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+#rpm -Uvh http://repo.mysql.com/mysql-community-release-el7-7.noarch.rpm
+
+#sudo yum update -y
+#yum -y install httpd
+#systemctl start httpd.service
+#systemctl enable httpd
+
+#rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+#yum -y install yum-utils
+#yum update
+#yum-config-manager --enable remi-php72
+#yum -y install php php-opcache
+#systemctl restart httpd.service
+#nano /var/www/html/info.php
+
+<?php
+phpinfo();
+
+#wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+#yum install mysql-server
+#systemctl start mysqld.service
+#mysql_secure_installation
+#systemctl restart mysqld.service
+#systemctl enable mysqld.service
+#mysql -u root -p  (login to root)
+#systemctl status httpd
+
+
+
+https://tecadmin.net/install-php-7-apache-2-4-mysql-on-centos-rhel/
+
+================================================================================================
+
+
+
+https://www.tecmint.com/install-ftp-server-in-centos-7/
+
+installing ftp and creating user.
+
+#yum -y update
+#yum -y install vsftpd
+#vim /etc/vsftpd/vsftpd.conf
+#anonymous_enable=NO      
+#local_enable=YES             {uncomment}
+#write_enable=YES             {uncomment}
+#chroot_local_user=YES        {uncomment}
+#vim /etc/vsftpd/chroot_list
+#systemctl restart vsftpd
+#systemctl enable vsftpd
+#setsebool -P ftp_home_dir on
+#useradd username
+#passwd username
+enter password=
+
+
+CREATING JAILED USER:
+ 
+#sudo adduser sammyfiles
+#sudo passwd sammyfiles
+#sudo mkdir -p /var/sftp/uploads
+#sudo chown root:root /var/sftp
+#sudo chmod 755 /var/sftp
+#sudo chown sammyfiles:sammyfiles /var/sftp/uploads
+
+
+Restricting Access to One Directory
+
+#sudo vi /etc/ssh/sshd_config
+
+Scroll to the very bottom of the file and append the following configuration snippet:
+
+. . .
+
+Match User sammyfiles
+ForceCommand internal-sftp
+PasswordAuthentication yes
+ChrootDirectory /var/sftp
+PermitTunnel no
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+
+sudo systemctl restart sshd
+
+DONE
+
+===============================================================================================
+
+
+          CREATING VIRTUAL HOST (MULTIPLE WEBSITES)
+
+Now, create two directory for websites www.vhost1.com and www.vhost2.com under Apache default document root directory.
+
+#sudo mkdir -p /var/www/html/www.vhost1.com
+#sudo mkdir -p /var/www/html/www.vhost2.com
+
+
+Now, you need to create an index.html file for each website which will identify that specific domain.
+
+Let's create an index.html file for the www.vhost1.com virtual host.
+
+#sudo nano /var/www/html/www.vhost1.com/index.html
+
+Add the following content.
+
+<html>
+
+<head>
+ <title>www.vhost1.com</title>
+</head>
+
+<body>
+ <h1>The vhost1.com virtual host is working!</h1>
+</body>
+
+</html>
+
+
+#sudo nano /var/www/html/www.vhost2.com/index.html
+
+<html>
+
+<head>
+ <title>www.vhost2.com</title>
+</head>
+
+<body>
+ <h1>The vhost2.com virtual host is working!</h1>
+</body>
+
+</html>
+
+
+You can change the ownership with the chown command.
+
+#sudo chown -R apache:apache /var/www/html/www.vhost1.com
+#sudo chown -R apache:apache /var/www/html/www.vhost2.com
+
+
+
+
+You should also make the Apache document root /var/www/html directory world readable, so that everyone can read files from that directory.
+
+#sudo chmod -R 755 /var/www/html
+
+Let's create a virtual host file for the website www.vhost1.com.
+
+#sudo nano /etc/httpd/conf.d/vhost1.com.conf
+
+Add the following content.
+
+<VirtualHost *:80>
+
+  ServerName www.vhost1.com
+  ServerAlias vhost1.com
+  DocumentRoot /var/www/html/www.vhost1.com
+  ErrorLog /var/www/html/www.vhost1.com/error.log
+  CustomLog /var/www/html/www.vhost1.com/access.log combined
+
+</VirtualHost>
+
+Similarly, create a virtual host file for the website www.vhost2.com.
+
+#sudo nano /etc/httpd/conf.d/vhost2.com.conf
+
+Add the following content.
+
+<VirtualHost *:80>
+
+  ServerName www.vhost2.com
+  ServerAlias vhost2.com
+  DocumentRoot /var/www/html/www.vhost2.com
+  ErrorLog /var/www/html/www.vhost2.com/error.log
+  CustomLog /var/www/html/www.vhost2.com/access.log combined
+
+</VirtualHost>
+
+
+To do this, on the desktop Linux machine that you want to access the www.vhost1.com and www.vhost2.com websites from, open the /etc/hosts file:
+
+#sudo nano /etc/hosts
+
+
+Add the following lines, using the static IP address of your server:
+
+#192.0.2.0 www.vhost1.com
+#192.0.2.0 www.vhost2.com
+==============================================================================================
+
+
+After the syntax check is done, restart Apache to make these changes take effect.
+
+sudo systemctl restart httpd
+
+
+
+
+https://www.digitalocean.com/community/tutorials/how-to-enable-sftp-without-shell-access-on-centos-7
+
+~command to list the users
+
+#cut -d: -f1 /etc/passwd
+
+#less /etc/passwd
+
+
+
+
+
