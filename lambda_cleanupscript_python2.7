@@ -17,7 +17,7 @@ import sys
 
 ec = boto3.client('ec2', 'ap-south-1')
 ec2 = boto3.resource('ec2', 'ap-south-1')
-images = ec2.images.filter(Owners=["312108981516"])
+images = ec2.images.filter(Owners=["112921321906"])
 
 def lambda_handler(event, context):
     
@@ -120,7 +120,7 @@ def lambda_handler(event, context):
 
     if BackupSuccess == True:
 
-        snapshots = ec.describe_snapshots(MaxResults=1000, OwnerIds=['312108981516'])['Snapshots']
+        snapshots = ec.describe_snapshots(MaxResults=1000, OwnerIds=['112921321906'])['Snapshots']
 
         # loop through list of image IDs
         for image in imagesList:

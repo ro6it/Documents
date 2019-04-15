@@ -1,0 +1,11 @@
+CAL Licence
+
+firstly go to IIS
+Add roles and features
+click on next and add server roll
+--remote desktop services
+click next and select -- remote desktop licence
+-- remote desktop session host
+open remote desktop licence manager
+expend all server
+and right click win(option) and click on activate server

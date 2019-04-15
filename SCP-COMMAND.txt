@@ -1,0 +1,4 @@
+scp -i AMC_PPFAS.pem -P 5726 -r  distributors ubuntu@172.31.10.211:/home/ubuntu/
+
+
+scp -i /home/aabid2/Downloads/WISHFIN-PROD-OPENVPN-NEW.pem ec2-user@52.66.5.174:/etc/openvpn/vpnclient/* /home/aabid2/Desktop/WISHFIN-PROD/

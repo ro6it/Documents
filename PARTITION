@@ -1,0 +1,30 @@
+S4PDDB
+
+SWAP  		- /dev/sdb - 128GB
+/hana/data 	- /dev/sde - 256GB
+/hana/log  	- /dev/sdc - 128GB
+/hana/shared	- /dev/sdd - 128GB
+/usr/sap	- /dev/sdf - 50GB
+/hana/backup	- /dev/sdg - 300GB
+/software	- /dev/sdh - 100GB
+
+	
+	S4PDCI	
+/usr/sap	-/dev/sdc  	- 30
+/sapmnt		-/dev/sdb 	- 30
+/usr/sap/trans	-/dev/sdd	- 100
+/software	-/dev/sde 	- 100
+SWAP		-/dev/sdf 	- 24
+
+
+
+	S4PDAP
+/usr/sap	-/dev/xvdb	-30
+/sapmnt/	-/dev/xvdc	-30
+/usr/sap/trans	-/dev/xvdd	-100
+/software	-/dev/xvde	-100
+SWAP		-/dev/xvdf	-24
+
+	
+		
+

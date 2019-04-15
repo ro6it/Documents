@@ -1,0 +1,51 @@
+1.login to console
+
+2.open snowball
+
+3.select backup
+
+4.copy 29 digit code and save it in notepad
+
+5.download manifiest
+
+6.go to location of downloaded manifest and copy the name and add ".bin" at last
+
+7.Start the snoball using the below command:
+
+#snowball start -i IP Address(of the snowball) -m Path/to/manifest/file (downloaded manifest with adding .bin) -u 29 character unlock code (put coppied code after -u)
+
+
+8.Make a directory into the snowball using the clients computer(ANYDESK)
+#snowball mkdir s3://meip-first/NewDirectory"
+
+9.Go to snowball terminal and click on get client
+10.once downloaded install it
+
+11.To set the path after downloading run the command:
+#set path=C:\Program Files (x86)\SnowballClient\bin
+
+12.Start copying using this command:
+#snowball cp -r -b C:\Users\shahnawaz\Desktop\Sample.txt (path of the file to be copied) s3://meip-first (s3://bucket-name/directory-name--path of the directory to copy in) ====> Directory
+
+
+
+
+
+
+
+snowball cp C:\Users\shahnawaz\Desktop\Sample.txt s3://meip-first ====> File
+
+
+
+snowball stop
+
+snowball ls s3://meip-first
+
+snowball ls s3://meip-first
+
+snowball ls (to list the bucket)
+
+
+C:\Program Files (x86)\SnowballClient\bin
+
+

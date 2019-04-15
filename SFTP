@@ -1,0 +1,76 @@
+SFTP USER
+
+adduser sftpuser
+passwd sftpuser
+usermod -g apache sftpuser
+chown -R sftpuser:apache /var/www/html
+
+Change permission of the files within html dir as the user
+chown -R sftpuser /var/www/html
+
+
+
+
+
+
+adduser sftpuser
+passwd sftpuser
+setfacl -m d:u:sftpuser:rwx,g:apache:rwx /var/www/html
+chown -R apache:apache /var/www/html
+usermod -G nginx sftp-api
+
+changing owner to get defaul permission as (755 and 644)
+chown -R sftp-api:nginx /usr/share/nginx/html
+
+Adding nginx to sftp-api group
+usermod -G sftp-api nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+89  useradd -m -d /usr/share/nginx/html klinicappsftp 
+   90  cat /etc/passwd
+   91  grep apache /etc/passwd
+   92  grep ngnix /etc/passwd
+   93  ls -ld /usr/share/nginx/html 
+   94  chown -R apache:apache /usr/share/nginx/html
+   95  usermod -G apache klinicappsftp 
+   96  passwd klinicappsftp 
+   97  vim /etc/ssh/sshd_config
+Add these lines
+Match User sammyfiles
+ForceCommand internal-sftp
+PasswordAuthentication yes
+ChrootDirectory /var/sftp
+PermitTunnel no
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+
+set password authentication = yes
+
+   98  systemctl restart sshd
+   99  curl ipinfo.io
+  100  sftp klinicappsftp@localhost
+  101  setfacl -m d:u:klinicappsftp:rwx,g:apache:rwx /usr/share/nginx/html
+  102  systemctl restart sshd
+  103  cd /usr/share/nginx/html/
+  104  ll
+  105  touch kliniapp
+  106  cd ..
+  107  ll
+  108  touch aabid
+  109  rm aabid 
+  110  ll
+  111  history
+

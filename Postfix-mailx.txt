@@ -1,0 +1,24 @@
+1 yum -y install postfix cyrus-sasl-plain mailx
+2 systemctl restart postfix
+3 systemctl enable postfix
+4 vim /etc/postfix/main.cf 
+5 vim /etc/postfix/sasl_passwd
+6 postmap /etc/postfix/sasl_passwd
+7 chown root:postfix /etc/postfix/sasl_passwd*
+8 chmod 640 /etc/postfix/sasl_passwd*
+9 systemctl restart postfix
+10 echo "this is a test mail" | mail -s "test mail" ntnjoshi5911@gmail.com
+11 tail -f /var/log/maillog
+
+
+Open the /etc/postfix/main.cf and add the following lines to the end of the file.
+
+myhostname = hostname.example.com
+
+relayhost = [smtp.gmail.com]:587
+smtp_use_tls = yes
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt
+smtp_sasl_security_options = noanonymous
+smtp_sasl_tls_security_options = noanonymous

@@ -1,0 +1,13 @@
+	CUSTOM MSSQL PORT
+
+1). Open ->SQL Server Management Studio.
+2). Right click -> Properties -> connections
+3). Tick Allow Remote Connection
+
+SQL ServerConfiguration Manager
+
+4). Expand -> SQL Server Network -> TCP/IP Enable
+5). Right-click -> TCP/IP -> Properties -> IP Address
+6). IPALL -> TCP Port -> 2429(any) -> apply-> OK
+
+7). Create a New Role for TCP into Firewall For MSSQL Port.

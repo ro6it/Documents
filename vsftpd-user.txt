@@ -1,0 +1,36 @@
+1. sudo yum install vsftpd
+2. Open up the FTP ports on your EC2 instance
+
+SSH 	TCP 	22 	ip/32
+HTTP 	TCP 	80 	0.0.0.0/0
+Custom TCP Rule 	TCP 	20 - 21 	0.0.0.0/0
+Custom TCP Rule 	TCP 	1024 - 1048 	0.0.0.0/0
+
+3. Make updates to the vsftpd.conf file
+
+anonymous_enable=YES
+to
+anonymous_enable=NO
+
+pasv_enable=YES
+pasv_min_port=1024
+pasv_max_port=1048
+pasv_address=<Public IP of your instance>
+local_root=/var/www/html
+
+4. Restart vsftpd
+
+5. sudo adduser gunjan-ftp
+   sudo passwd gunjan-ftp
+
+6. Restricting users to their home directories
+
+nano /etc/vsftpd/vsftpd.conf
+chroot_local_user=YES
+
+7.Restart the vsftpd server 
+
+8.https://www.liquidweb.com/kb/error-500-oops-vsftpd-refusing-to-run-with-writable-root-inside-chroot-solved/
+
+echo 'allow_writeable_chroot=YES' >> /etc/vsftpd/vsftpd.conf
+systemctl restart vsftpd

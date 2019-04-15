@@ -1,0 +1,23 @@
+	CUSTOM RDP PORT 
+
+1). Open Server
+2). Run-> regedit
+3). Hkey_Local_Machine
+4). System
+5). CurrentControlSet
+6). Control
+7). Terminal Server
+8). RDP-TCP
+9). Search Port number
+10). Edit port number->Decimal->Custom port(9296) ->OK
+11). Run ->firewall.cpl
+12). Advance Setting
+13). Inbound Rule
+14). New Rule -> Port->TCP->Port->Name->Done
+15). New Rule -> Port->UDP->Port->Name->Done
+16). Disable Old RDP Port Rules.
+
+17). Stop Start The Server.
+
+
+	DONE

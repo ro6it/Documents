@@ -1,0 +1,22 @@
+Command to create user for a particular database within databases;
+
+Create a user and password
+#CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+
+Give privileges to the user
+#GRANT ALL PRIVILEGES ON database_name.* TO 'username'@'localhost';
+
+#FLUSH PRIVILEGES;
+
+
+Command to give limited permission to a user with in mysql
+
+#GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON . TO 'new_master_user'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+Command to list user with their password
+#SELECT User, Host, Password FROM mysql.user;
+
+Command to list user
+#SELECT User, Host FROM mysql.user;

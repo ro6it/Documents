@@ -1,0 +1,108 @@
+4  yum update
+    5  yum install httpd*
+    6  httpd -v
+    7  sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    8  sudo yum install -y epel-release
+    9  yum-config-manager --enable epel
+   10  vim /etc/yum.repos.d/epel.repo
+   11  rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+   12  yum -y install yum-utils
+   13  yum-config-manager --enable remi-php72
+   14  yum -y install php php-opcache
+   15  sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+   16  php -v
+   17  wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+   18  yum install mysql-server
+   19  systemctl start mysqld.service
+   20  systemctl start mysqld.service
+   21  service start mysqld.service
+   22  mysql_secure_installation
+   23  systemctl start mysqld.service
+   24  systemctl start mysqld
+   25  systemctl start mysql
+   26  systemctl start httpd
+   27  mysql -u root -p
+   28  mysql_secure_installation
+   29  mysql -v
+   30  yum install mysql
+   31  wget http://dev.mysql.com/downloads/repo/yum/
+   32  yum -y install mysql-community-server
+   33  mysql -v
+   34  yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   35  sudo yum install -y epel-release
+   36  yum-config-manager --enable epel
+   37  yum repolist
+   38  yum install phpmyadmin
+   39  exit
+   40  history
+   41  yum install mysqld
+   42  yum install mysql-community-client
+   43  cat /etc/system-release
+   44  cat /etc/system-release
+   45  service httpd start
+   46  yum install -y mysql56-server
+   47  wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+   48  yum install -y mysql56-server
+   49  yum install -y mysql56
+   50  yum install mysql
+   51  mysql -v
+   52  mysql --version
+   53  vim /var/www/html/info.php
+   54  service httpd restart
+   55  vim /var/www/html/info.php
+   56  service httpd restart
+   57  yum insta;; phpmyadmin
+   58  yum insta;; phpmyadmin
+   59  [root@ip-172-31-28-81 ec2-user]# service httpd restart
+   60  [root@ip-172-31-28-81 ec2-user]# service httpd restart
+   61  [root@ip-172-31-28-81 ec2-user]# service httpd restart
+   62  service mysqld start
+   63  systemctl  mysqld start
+   64  [root@ip-172-31-28-81 ec2-user]# service httpd restart
+   65  [root@ip-172-31-28-81 ec2-user]# service httpd restart
+   66  [root@ip-172-31-28-81 ec2-user]# service httpd restart
+   67  wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+   68  yum install mysql-server
+   69  systemctl start mysqld.service
+   70  yum remove mariadb*
+   71  php -v
+   72  yum install  mysql-community-client*
+   73  vim mysql.repo 
+   74   yum install  mysql-community-client
+   75  wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+   76  rpm -Uvh http://repo.mysql.com/mysql-community-release-el7-7.noarch.rpm
+   77  yum install mysql-client
+   78  yum install mysql-community-client
+   79  mysql -v
+   80  mysql -V
+   81  yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+   82  yum remove mysql*
+   83  yum remove mysql-community-release-el7-7.noarch
+   84  yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+   85  mysql -v
+   86  yum install mysql-community-server
+   87  service mysqld start
+   88  mysql_secure_installation 
+   89  grep 'temporary password' /var/log/mysqld.log
+   90  mysql_secure_installation 
+   91  echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+   92  systemctl restart httpd
+   93  systemctl enable httpd
+   94  sudo yum install php-mbstring -y
+   95  systemctl restart httpd
+   96  wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+   97  mkdir phpMyAdmin && tar -xvzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdmin --strip-components 1
+   98  rm phpMyAdmin-latest-all-languages.tar.gz
+   99  systemctl restart mysql.service
+  100  systemctl restart mysqld.service
+  101  systemctl restart httpd
+  102  sudo systemctl is-enabled httpd
+  103  sudo systemctl restart php-fpm
+  104  cd /var/www/html
+  105  wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+  106  mkdir phpMyAdmin && tar -xvzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdmin --strip-components 1
+  107  rm phpMyAdmin-latest-all-languages.tar.gz
+  108  systemctl start mysqld.service
+  109  cd ~
+  110  history
+

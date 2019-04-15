@@ -1,0 +1,57 @@
+
+
+
+#lsblk      -----------(to list the partition)                 
+
+#fdisk /dev/xvdf   ----(select the volume to do partition within) 
+
+#n      ----------------(to create a new partition just after the above command)
+
+#+size(K, M, G)    -----(type the size of the partition to be made)
+
+#w        --------------(to write the patition)
+
+#partprobe
+
+#mkdir -p /mount-directory-name -----(to create a mount directory for the partition)
+
+#pvcreate /dev/xvdf1       ----------(
+
+#vgcreate vg_vgname /dev/xvdf1 -----------------(to create vg for filesystem)
+
+#lvcreate -L +sizeG -n lv_lvname vg_vgname  ----(to create lv for filesystem)
+
+#vgs         -----------------------------------(to list the vg's)
+
+#lvs         -----------------------------------(to list the lv's)
+
+#mkfs.ext3 /dev/vg_vgname/lv_lvname   ----------(to format the created partition with the type ext3)
+
+#vim /etc/fstab     ----------------------------(to enter the values {filesystem,type..} to mount parmanently)
+
+entery with in fstab:
+
+filesystem name           mount             type defaults 0 0
+
+#/dev/vg_name/lv_lvname   /mount-directory  ext3 defaults 0 0-----(entries to be done with in fstab)
+
+or type mentioed command just after opening fstab:
+
+#:r!blkid /dev/vg_vgname/lv_lvname     ---------------------------(to find the uuid of the partition)
+
+Now, exit
+#mount -a        -------------------------------------------------(to mount the partitions)
+#df -Th          -------------------------------------------------(to list the partition)
+
+
+Check lv status:
+
+#lvscan
+
+check if the INACTIVE same as what you are missing.
+
+To fix do vgchange:
+
+#vgchange -ay
+
+

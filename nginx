@@ -42,8 +42,10 @@
    42  systemctl stop php72-php-fpm.service
    43  systemctl restart php72-php-fpm.service
    44  systemctl status php72-php-fpm.service
+
 Create nginx repo----
    45  vim /etc/yum.repos.d/nginx.repo
+
 save this code in it:
 [nginx]
 name=nginx repo
@@ -75,3 +77,6 @@ Add the following command into it:
    58  vim /usr/share/nginx/html/foo.php
    59  history
 cd 
+
+
+https://www.tecmint.com/run-multiple-websites-with-different-php-versions-in-nginx/

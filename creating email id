@@ -1,0 +1,14 @@
+Creating an email id into aws
+
+1> Go to WorkMail
+2> Quick setup
+3> Enter the "Organization Name".
+4> Create
+
+5> Click on the organization name.
+6> Create User.
+7> Go to Domain.
+8> Add domain
+9> Enter Domain.com
+10> Click on the domain Created
+11> Add all the (TXT, MX and CNAME) entries into route53/DNS of that domain.

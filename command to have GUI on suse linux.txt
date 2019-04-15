@@ -1,0 +1,9 @@
+xclock on non-root user
+env | grep DISPLAY on non-root
+xauth list
+copy the complete line with the same unix version as dispaley after "env | grep DISPLAY"
+sudo bash
+xauth add (paste the copied xauth value)
+export DISPLAY=localhost:11.0 (same value as on "env | grep DISPLAY")
+xclock
+./install (execute the file)

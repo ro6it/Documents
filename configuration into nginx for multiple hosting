@@ -1,0 +1,35 @@
+Entries needed to put within the Server configuration file of website.(/etc/nginx/conf.d/domain.conf)
+
+
+
+server {
+        listen 80;
+        listen [::]:80;
+        server_name studios.fitindia.io;
+        root /usr/share/nginx/html/fitpass_studio/web;
+        index index.php index.html index.htm;
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
+
+    error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+        root /usr/share/nginx/html/;
+        }
+    location ~ /\.ht {
+                deny  all;
+        }
+
+    location ~ \.php$ {
+                   #root /usr/share/nginx/html;
+                try_files $uri /index.php =404;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                   #fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_pass    127.0.0.1:9000;
+                fastcgi_index   index.php;
+                include fastcgi_params;
+                fastcgi_param   SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        }
+}
+
+

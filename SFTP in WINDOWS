@@ -1,0 +1,48 @@
+Newer Version of this Video can be found here 
+
+https://www.youtube.com/watch?v=CXzBd...
+
+Link to my Cygwin Install Notes - https://goo.gl/7klW03 
+
+Updated video on how to install SFTP on a Windows Server using Cygwin OpenSSH for Windows Server 2003, 2008, 2008R2, 2012, 2014
+
+In the Cygwin Terminal Shell 
+   ========================== 
+
+#If you don't have a group or password file in /etc do the following 2 
+commands 
+
+#mkgroup [redirect great than symbol] /etc/group 
+#mkpasswd -cl [redirect great than symbol] /etc/passwd 
+
+export CYGWIN='ntsec tty' 
+chmod +rw /etc/group 
+chmod +rw /etc/passwd 
+chmod 0755 /var 
+ssh-host-config
+
+Answers to the questions when prompted for from ssh-host-config =================================================================== 
+1) should strictmodes be used? no 
+2) Should privilege separation be used? yes 
+3) New local account 'sshd'? yes 
+4) do you want to install sshd as a service? yes 
+5) Enter the value of CYGWIN daemon? sshd 
+6) do you want to use a different name? no 
+7) Create a new privileged user account 'cyg_server'? no 
+8) do you want to proceed anyway? yes
+
+In the DOS Command Shell 
+============================ 
+net start sshd 
+
+Some FSTAB Entries for Your Reference 
+==================================== 
+http://cygwin.com/cygwin-ug-net/using... 
+# FSTAB file for your reference 
+C:/cygwin64 / ntfs override,binary,noacl 0 0 
+C:/SFTP_ROOT /home ntfs override,binary,noacl 0 0 
+C:/cygwin64/bin /usr/bin ntfs override,binary,noacl 0 0 
+C:/cygwin64/lib /usr/lib ntfs override,binary,noacl 0 0 
+C:/cygwin64/etc/terminfo /usr/share/terminfo ntfs override,binary,noacl 0 0 none /cygdrive cygdrive binary,posix=0,user,noacl 0 0
+
+

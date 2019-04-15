@@ -1,0 +1,5 @@
+The browser caching can be leveraged through .htaccess
+
+Please refer to the link below:
+
+https://kinsta.com/blog/leverage-browser-caching/
